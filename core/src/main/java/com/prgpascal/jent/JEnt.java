@@ -201,7 +201,7 @@ public class JEnt {
 
 	private JEntReport generateTestReport() {
 		JEntReport testReport = new JEntReport();
-		testReport.setIsBinary(mJEntSettings.isBinary());
+		testReport.setBinary(mJEntSettings.isBinary());
 		testReport.setEntropy(mEntropy);
 		testReport.setTotalCount(mTotalCount);
 		testReport.setCompressionPercent((short) ((100 * ((mJEntSettings.isBinary() ? 1 : 8) - mEntropy)

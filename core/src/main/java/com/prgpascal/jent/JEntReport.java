@@ -32,7 +32,7 @@ public class JEntReport {
 		return isBinary;
 	}
 
-	public void setIsBinary(boolean isBinary) {
+	public void setBinary(boolean isBinary) {
 		this.isBinary = isBinary;
 	}
 
