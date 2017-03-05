@@ -1,43 +1,39 @@
 ## Overview
-This library is basically a Java porting of the [ENT randomness test tool][ent], created by John Walker and written in C.  
+This library is essentially a Java porting of the [ENT randomness test tool][ent], created by John Walker and written in C.  
 
-You can run it in your Java programs, get the tests results in a standard JavaBean object and interpret it to enstablish if a particular test (or all of them) passed.
+You can run it in your Java programs to get the tests results in a standard JavaBean object. You can than interpret it to enstablish if a particular test (or all of them) passed.
 
-Given an input file (and few optional parameters), Ent will calculate the following values:
+Given an input file (and few optional parameters), JEnt will calculate the following values:
 - Entropy
 - Chi-square Test
 - Arithmetic Mean
 - Monte Carlo Value for Pi
 - Serial Correlation Coefficient
 
-For more detail about the tests, please refer to the [Ent page][ent].
+For more detail about the tests, please refer to the [ENT project page][ent].
 
 
 ## Sample
-Just create an EntSettings object and pass it to Ent.
-As result, you wil get a TestReport Java Bean object, that carryes all the tests results.
+Just create a JEntSettings object and pass it to JEnt.
+As result, you wil get a JEntReport JavaBean object, that carryes all the tests results.
 ```java
-...
-EntSettings settings = new EntSettings.Builder()
-      .setInputFile(inputFile)
-      .build();
+JEntSettings settings = new JEntSettings.Builder()
+    .setInputFile(new File("input/inputFile.txt"))
+    .build();
 
-TestReport testReport = Ent.executeTests(settings);
-...
+JEntReport report = JEnt.executeTests(settings);
 ```
 You  need to implement the whole logic to define if a test passed or not, based on the result this library will provide.  
 For example, you can check if the tested input file contains a sufficient amount of entropy, with something like this:
 ```java
-...
-if (testReport.getEntropy() > 7.5){
-      // OK, it may be random...
+if (report.getEntropy() > 7.5) {
+    // OK, it may be random...
 } else {
-      // mmmh, too little entropy...
+	 // mmmh, too little entropy...
 }
-...
 ```
 
-Calling toString() will return a String similar to the original Ent output message.
+Calling toString() will return a String similar to the original ENT output message.
 
 ```
 Entropy = 7,999775630955 bits per byte.
@@ -54,13 +50,13 @@ Serial correlation coefficient is -0,001768443360 (totally uncorrelated = 0.0).
 ```
 
 ## Settings
-*Ent.executeTests()* requires an EntSettings parameter.
-The input file parameter is mandatory, while the other fields are optional (because a default value is already set).
+*JEnt.executeTests()* method requires a JEntSettings parameter object.
+The input file field is mandatory, while the other fields are optional (because a default value is already set).
 ```java
-EntSettings settings = new EntSettings.Builder()
+JEntSettings settings = new JEntSettings.Builder()
       .setInputFile(inputFile)
-      .setIsBinary(false)
-      .setCharset(Charset.forName(Ent.ISO88591))
+      .setBinary(true)
+      .setCharset(Charset.forName(JEnt.ISO88591))
       .build();
 ```
 
