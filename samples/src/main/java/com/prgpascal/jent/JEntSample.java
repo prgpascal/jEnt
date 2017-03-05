@@ -26,13 +26,19 @@ import com.prgpascal.jent.JEntReport;
 public class JEntSample {
 
 	public static void main(String[] args) {
-		JEntSettings jEntSettings = new JEntSettings.Builder()
-				.setIsBinary(true)
+		JEntSettings settings = new JEntSettings.Builder()
+				.setBinary(true)
 				.setCharset(Charset.forName(JEnt.ISO88591))
-				.setInputFile(new File("input/inputFile.txt"))
-				.build();
-		
-		JEntReport report = JEnt.executeTests(jEntSettings);
+				.setInputFile(new File("input/inputFile.txt")).build();
+
+		JEntReport report = JEnt.executeTests(settings);
+
+		if (report.getEntropy() > 7.5) {
+			// OK, it may be random...
+		} else {
+			// mmmh, too little entropy...
+		}
+
 		System.out.println(report.toString());
 	}
 

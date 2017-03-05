@@ -57,7 +57,7 @@ public class JEntSettings {
 			return this;
 		}
 
-		public Builder setIsBinary(boolean isBinary) {
+		public Builder setBinary(boolean isBinary) {
 			this.isBinary = isBinary;
 			return this;
 		}
