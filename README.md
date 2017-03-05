@@ -1,7 +1,7 @@
 ## Overview
 This library is essentially a Java porting of the [ENT randomness test tool][ent], created by John Walker and written in C.  
 
-You can run it in your Java programs and get the tests results in a standard JavaBean object. You can than interpret it to enstablish if a particular test (or all of them) passed.
+You can run it in your Java programs and get the tests results in a standard JavaBean object. You can than interpret it to establish if a particular test (or all of them) passed.
 
 Given an input file (and few optional parameters), JEnt will calculate the following values:
 - Entropy
@@ -15,7 +15,7 @@ For more detail about the tests, please refer to the [ENT project page][ent].
 
 ## Sample
 Just create a JEntSettings object and pass it to JEnt.
-As result, you wil get a JavaBean object, that carryes all the tests results.
+As result, you wil get a JavaBean object, that contains all the tests results.
 ```java
 JEntSettings settings = new JEntSettings.Builder()
     .setInputFile(new File("input/inputFile.txt"))
@@ -33,7 +33,7 @@ if (report.getEntropy() > 7.5) {
 }
 ```
 
-Calling toString() will return a String similar to the original ENT output message.
+Calling toString() you will get a String similar to the original ENT output message.
 
 ```
 Entropy = 7,999775630955 bits per byte.
