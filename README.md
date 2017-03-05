@@ -15,7 +15,7 @@ For more detail about the tests, please refer to the [ENT project page][ent].
 
 ## Sample
 Just create a JEntSettings object and pass it to JEnt.
-As result, you wil get a JavaBean object, that contains all the tests results.
+As result, you will get a JavaBean object, containing all the tests results.
 ```java
 JEntSettings settings = new JEntSettings.Builder()
     .setInputFile(new File("input/inputFile.txt"))
@@ -29,7 +29,7 @@ For example, you can check if the tested input file contains a sufficient amount
 if (report.getEntropy() > 7.5) {
     // OK, it may be random...
 } else {
-	 // mmmh, too little entropy...
+    // mmmh, too little entropy...
 }
 ```
 
@@ -60,6 +60,42 @@ JEntSettings settings = new JEntSettings.Builder()
       .build();
 ```
 
+## How to import
+#### Maven
+You can use JitPack to easily import this library into your Maven project.  
+In your pom.xml add this:
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+```
+and this:
+```xml
+<dependency>
+  <groupId>com.github.prgpascal.jEnt</groupId>
+  <artifactId>core</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+#### Gradle
+You can use JitPack to easily import this library into your Gradle project.  
+In your build.gradle add this:
+```gradle
+repositories {
+  maven { url "https://jitpack.io" }
+}
+```
+and this:
+```gradle
+dependencies {
+  compile 'com.github.prgpascal:jEnt:core:1.0.0'
+}
+```
+
 ## License
 	Copyright 2017 Riccardo Leschiutta
 
@@ -74,6 +110,8 @@ JEntSettings settings = new JEntSettings.Builder()
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
+
+The original [ENT project][ent] was developed by John Walker, and it's in the public domain.
 
 
 [ent]: http://www.fourmilab.ch/random/
