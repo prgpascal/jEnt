@@ -17,29 +17,42 @@
 package com.prgpascal.jent;
 
 import java.io.File;
-import java.nio.charset.Charset;
-
-import com.prgpascal.jent.JEnt;
-import com.prgpascal.jent.JEntSettings;
-import com.prgpascal.jent.JEntReport;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class JEntSample {
 
-	public static void main(String[] args) {
-		JEntSettings settings = new JEntSettings.Builder()
-				.setBinary(true)
-				.setCharset(Charset.forName(JEnt.ISO88591))
-				.setInputFile(new File("input/inputFile.txt")).build();
+    public static void main(String[] args) {
+        JEntReport report = generateReportForSampleFile();
 
-		JEntReport report = JEnt.executeTests(settings);
+        if (report.getEntropy() > 7.5) {
+            // OK, it may be random...
+        } else {
+            // mmmh, too little entropy...
+        }
 
-		if (report.getEntropy() > 7.5) {
-			// OK, it may be random...
-		} else {
-			// mmmh, too little entropy...
-		}
+        System.out.println(report.toString());
+    }
 
-		System.out.println(report.toString());
-	}
+    public static JEntReport generateReportForSampleFile() {
+        File sampleFile = getFileFromResources("input/inputFile.txt");
+
+        JEntSettings settings = new JEntSettings.Builder()
+                .setBinary(true)
+                .setCharset(StandardCharsets.ISO_8859_1)
+                .setInputFile(sampleFile).build();
+
+        return JEnt.executeTests(settings);
+    }
+
+    private static File getFileFromResources(String fileName) {
+        ClassLoader classLoader = JEntSample.class.getClassLoader();
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("File not found: " + fileName);
+        } else {
+            return new File(resource.getFile());
+        }
+    }
 
 }

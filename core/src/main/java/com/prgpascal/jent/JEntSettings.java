@@ -18,60 +18,61 @@ package com.prgpascal.jent;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class JEntSettings {
-	private File inputFile;
-	private Charset charset;
-	private boolean isBinary;
+    private File inputFile;
+    private Charset charset;
+    private boolean isBinary;
 
-	private JEntSettings(File inputFile, Charset charset, boolean isBinary) {
-		this.inputFile = inputFile;
-		this.charset = charset;
-		this.isBinary = isBinary;
-	}
+    private JEntSettings(File inputFile, Charset charset, boolean isBinary) {
+        this.inputFile = inputFile;
+        this.charset = charset;
+        this.isBinary = isBinary;
+    }
 
-	public File getInputFile() {
-		return inputFile;
-	}
+    public File getInputFile() {
+        return inputFile;
+    }
 
-	public Charset getCharset() {
-		return charset;
-	}
+    public Charset getCharset() {
+        return charset;
+    }
 
-	public boolean isBinary() {
-		return isBinary;
-	}
+    public boolean isBinary() {
+        return isBinary;
+    }
 
-	public static class Builder {
-		private File inputFile;
-		private Charset charset = Charset.forName(JEnt.ISO88591);
-		private boolean isBinary = false;
+    public static class Builder {
+        private File inputFile;
+        private Charset charset = StandardCharsets.ISO_8859_1;
+        private boolean isBinary = false;
 
-		public Builder setInputFile(File inputFile) {
-			this.inputFile = inputFile;
-			return this;
-		}
+        public Builder setInputFile(File inputFile) {
+            this.inputFile = inputFile;
+            return this;
+        }
 
-		public Builder setCharset(Charset charset) {
-			this.charset = charset;
-			return this;
-		}
+        public Builder setCharset(Charset charset) {
+            this.charset = charset;
+            return this;
+        }
 
-		public Builder setBinary(boolean isBinary) {
-			this.isBinary = isBinary;
-			return this;
-		}
+        public Builder setBinary(boolean isBinary) {
+            this.isBinary = isBinary;
+            return this;
+        }
 
-		public JEntSettings build() {
-			// Check the required params
-			if (inputFile == null)
-				throw new IllegalArgumentException("Input File cannot be null");
-			
-			if (!inputFile.exists())
-				throw new IllegalArgumentException("Input File does not exist");
+        public JEntSettings build() {
+            // Check the required params
+            if (inputFile == null)
+                throw new IllegalArgumentException("Input File cannot be null");
 
-			return new JEntSettings(inputFile, charset, isBinary);
-		}
-	}
+            if (!inputFile.exists())
+                throw new IllegalArgumentException("Input File does not exist");
+
+            return new JEntSettings(inputFile, charset, isBinary);
+        }
+    }
 
 }
