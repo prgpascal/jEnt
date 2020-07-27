@@ -17,152 +17,152 @@
 package com.prgpascal.jent;
 
 public class JEntReport {
-	private boolean isBinary;
-	private double entropy;
-	private int totalCount;
-	private double compressionPercent;
-	private double chiSquare;
-	private double chiSquareProbability;
-	private double aritmeticMean;
-	private double monteCarloPI;
-	private double monteCarloError;
-	private double serialCorrelation;
+    private boolean isBinary;
+    private double entropy;
+    private int totalCount;
+    private double compressionPercent;
+    private double chiSquare;
+    private double chiSquareProbability;
+    private double aritmeticMean;
+    private double monteCarloPI;
+    private double monteCarloError;
+    private double serialCorrelation;
 
-	public boolean isBinary() {
-		return isBinary;
-	}
+    public boolean isBinary() {
+        return isBinary;
+    }
 
-	public void setBinary(boolean isBinary) {
-		this.isBinary = isBinary;
-	}
+    public void setBinary(boolean isBinary) {
+        this.isBinary = isBinary;
+    }
 
-	public double getEntropy() {
-		return entropy;
-	}
+    public double getEntropy() {
+        return entropy;
+    }
 
-	public void setEntropy(double entropy) {
-		this.entropy = entropy;
-	}
+    public void setEntropy(double entropy) {
+        this.entropy = entropy;
+    }
 
-	public int getTotalCount() {
-		return totalCount;
-	}
+    public int getTotalCount() {
+        return totalCount;
+    }
 
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-	}
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
 
-	public double getCompressionPercent() {
-		return compressionPercent;
-	}
+    public double getCompressionPercent() {
+        return compressionPercent;
+    }
 
-	public void setCompressionPercent(double compressionPercent) {
-		this.compressionPercent = compressionPercent;
-	}
+    public void setCompressionPercent(double compressionPercent) {
+        this.compressionPercent = compressionPercent;
+    }
 
-	public double getChiSquare() {
-		return chiSquare;
-	}
+    public double getChiSquare() {
+        return chiSquare;
+    }
 
-	public void setChiSquare(double chiSquare) {
-		this.chiSquare = chiSquare;
-	}
+    public void setChiSquare(double chiSquare) {
+        this.chiSquare = chiSquare;
+    }
 
-	public double getChiSquareProbability() {
-		return chiSquareProbability;
-	}
+    public double getChiSquareProbability() {
+        return chiSquareProbability;
+    }
 
-	public void setChiSquareProbability(double chiSquareProbability) {
-		this.chiSquareProbability = chiSquareProbability;
-	}
+    public void setChiSquareProbability(double chiSquareProbability) {
+        this.chiSquareProbability = chiSquareProbability;
+    }
 
-	public double getAritmeticMean() {
-		return aritmeticMean;
-	}
+    public double getAritmeticMean() {
+        return aritmeticMean;
+    }
 
-	public void setAritmeticMean(double aritmeticMean) {
-		this.aritmeticMean = aritmeticMean;
-	}
+    public void setAritmeticMean(double aritmeticMean) {
+        this.aritmeticMean = aritmeticMean;
+    }
 
-	public double getMonteCarloPI() {
-		return monteCarloPI;
-	}
+    public double getMonteCarloPI() {
+        return monteCarloPI;
+    }
 
-	public void setMonteCarloPI(double monteCarloPI) {
-		this.monteCarloPI = monteCarloPI;
-	}
+    public void setMonteCarloPI(double monteCarloPI) {
+        this.monteCarloPI = monteCarloPI;
+    }
 
-	public double getMonteCarloError() {
-		return monteCarloError;
-	}
+    public double getMonteCarloError() {
+        return monteCarloError;
+    }
 
-	public void setMonteCarloError(double monteCarloError) {
-		this.monteCarloError = monteCarloError;
-	}
+    public void setMonteCarloError(double monteCarloError) {
+        this.monteCarloError = monteCarloError;
+    }
 
-	public double getSerialCorrelation() {
-		return serialCorrelation;
-	}
+    public double getSerialCorrelation() {
+        return serialCorrelation;
+    }
 
-	public void setSerialCorrelation(double serialCorrelation) {
-		this.serialCorrelation = serialCorrelation;
-	}
+    public void setSerialCorrelation(double serialCorrelation) {
+        this.serialCorrelation = serialCorrelation;
+    }
 
-	@Override
-	public String toString() {
-		String result = "";
+    @Override
+    public String toString() {
+        String result = "";
 
-		// Entropy
-		result += "Entropy = " + formatDouble(entropy) + " bits per ";
-		result += (isBinary ? "bit" : "byte") + ".\n";
-		result += "\n";
+        // Entropy
+        result += "Entropy = " + formatDouble(entropy) + " bits per ";
+        result += (isBinary ? "bit" : "byte") + ".\n";
+        result += "\n";
 
-		// Compression
-		result += "Optimum compression would reduce the size \n";
-		result += "of this " + totalCount + (isBinary ? " bit " : " byte ") + "file by ";
-		result += compressionPercent + " percent. \n";
-		result += "\n";
+        // Compression
+        result += "Optimum compression would reduce the size \n";
+        result += "of this " + totalCount + (isBinary ? " bit " : " byte ") + "file by ";
+        result += compressionPercent + " percent. \n";
+        result += "\n";
 
-		// Chi-square
-		result += "Chi square distribution for " + totalCount + " samples is " + formatDouble(chiSquare);
-		result += ", and randomly \n";
-		if (chiSquareProbability < 0.0001) {
-			result += "would exceed this value less than 0.01 percent of the times.\n";
-		} else if (chiSquareProbability > 0.9999) {
-			result += "would exceed this value more than than 99.99 percent of the times.\n";
-		} else {
-			result += "would exceed this value " + formatDouble(chiSquareProbability * 100);
-			result += " percent of the times.\n";
-		}
-		result += "\n";
+        // Chi-square
+        result += "Chi square distribution for " + totalCount + " samples is " + formatDouble(chiSquare);
+        result += ", and randomly \n";
+        if (chiSquareProbability < 0.0001) {
+            result += "would exceed this value less than 0.01 percent of the times.\n";
+        } else if (chiSquareProbability > 0.9999) {
+            result += "would exceed this value more than than 99.99 percent of the times.\n";
+        } else {
+            result += "would exceed this value " + formatDouble(chiSquareProbability * 100);
+            result += " percent of the times.\n";
+        }
+        result += "\n";
 
-		// Aritmetic mean
-		result += "Arithmetic mean value of data ";
-		result += (isBinary ? "bits" : "bytes");
-		result += " is " + formatDouble(aritmeticMean);
-		result += " (" + (isBinary ? 0.5 : 127.5) + " = random).";
-		result += "\n";
+        // Aritmetic mean
+        result += "Arithmetic mean value of data ";
+        result += (isBinary ? "bits" : "bytes");
+        result += " is " + formatDouble(aritmeticMean);
+        result += " (" + (isBinary ? 0.5 : 127.5) + " = random).";
+        result += "\n";
 
-		// Monte Carlo value
-		result += "Monte Carlo value for Pi is " + formatDouble(monteCarloPI);
-		result += " (error " + monteCarloError + " percent).";
-		result += "\n";
+        // Monte Carlo value
+        result += "Monte Carlo value for Pi is " + formatDouble(monteCarloPI);
+        result += " (error " + monteCarloError + " percent).";
+        result += "\n";
 
-		// Serial correlation
-		result += "Serial correlation coefficient is ";
-		if (serialCorrelation >= -99999) {
-			result += formatDouble(serialCorrelation);
-			result += " (totally uncorrelated = 0.0).";
-		} else {
-			result += "undefined (all values equal!).";
-		}
-		result += "\n";
+        // Serial correlation
+        result += "Serial correlation coefficient is ";
+        if (serialCorrelation >= -99999) {
+            result += formatDouble(serialCorrelation);
+            result += " (totally uncorrelated = 0.0).";
+        } else {
+            result += "undefined (all values equal!).";
+        }
+        result += "\n";
 
-		return result;
-	}
+        return result;
+    }
 
-	private String formatDouble(double value) {
-		return String.format("%.12f", value);
-	}
+    private String formatDouble(double value) {
+        return String.format("%.12f", value);
+    }
 
 }
