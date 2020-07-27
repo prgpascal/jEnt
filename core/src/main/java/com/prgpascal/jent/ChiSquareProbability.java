@@ -23,20 +23,17 @@ package com.prgpascal.jent;
  * 01879 Copyright: none
  */
 public class ChiSquareProbability {
-    // log(sqrt(pi))
-    private static final double LOG_SQRT_PI = 0.5723649429247000870717135;
-
-    // 1 / sqrt (pi)
-    private static final double I_SQRT_PI = 0.5641895835477562869480795;
+    private static final double LOG_SQRT_PI = Math.log(Math.sqrt(Math.PI));
+    private static final double I_SQRT_PI = 1 / Math.sqrt(Math.PI);
 
     // max value to represent exp (x)
-    private static final double BIGX = 20.0;
+    private static final double BIG_X = 20.0;
 
     // maximum meaningful z value
     private static final double Z_MAX = 6.0;
 
     private double ex(double x) {
-        if (x < -BIGX)
+        if (x < -BIG_X)
             return 0.0;
         return Math.exp(x);
     }
@@ -67,7 +64,7 @@ public class ChiSquareProbability {
         if (freedomDeg > 2) {
             x = 0.5 * (freedomDeg - 1.0);
             z = (isFreedomDegEven ? 1.0 : 0.5);
-            if (a > BIGX) {
+            if (a > BIG_X) {
                 e = (isFreedomDegEven ? 0.0 : LOG_SQRT_PI);
                 c = Math.log(a);
                 while (z <= x) {

@@ -23,7 +23,7 @@ public class JEntReport {
     private double compressionPercent;
     private double chiSquare;
     private double chiSquareProbability;
-    private double aritmeticMean;
+    private double arithmeticMean;
     private double monteCarloPI;
     private double monteCarloError;
     private double serialCorrelation;
@@ -76,12 +76,12 @@ public class JEntReport {
         this.chiSquareProbability = chiSquareProbability;
     }
 
-    public double getAritmeticMean() {
-        return aritmeticMean;
+    public double getArithmeticMean() {
+        return arithmeticMean;
     }
 
-    public void setAritmeticMean(double aritmeticMean) {
-        this.aritmeticMean = aritmeticMean;
+    public void setArithmeticMean(double arithmeticMean) {
+        this.arithmeticMean = arithmeticMean;
     }
 
     public double getMonteCarloPI() {
@@ -136,10 +136,10 @@ public class JEntReport {
         }
         result += "\n";
 
-        // Aritmetic mean
+        // Arithmetic mean
         result += "Arithmetic mean value of data ";
         result += (isBinary ? "bits" : "bytes");
-        result += " is " + formatDouble(aritmeticMean);
+        result += " is " + formatDouble(arithmeticMean);
         result += " (" + (isBinary ? 0.5 : 127.5) + " = random).";
         result += "\n";
 

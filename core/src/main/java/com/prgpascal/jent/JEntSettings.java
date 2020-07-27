@@ -18,6 +18,7 @@ package com.prgpascal.jent;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class JEntSettings {
     private File inputFile;
@@ -44,7 +45,7 @@ public class JEntSettings {
 
     public static class Builder {
         private File inputFile;
-        private Charset charset = Charset.forName(JEnt.ISO88591);
+        private Charset charset = StandardCharsets.ISO_8859_1;
         private boolean isBinary = false;
 
         public Builder setInputFile(File inputFile) {

@@ -22,12 +22,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class JEnt {
-    public static final String ISO88591 = "ISO-8859-1";
-    private static final double LOG_2_OF_10 = 3.32192809488736234787;
+    private static final double LOG_2_OF_10 = Math.log(10) / Math.log(2);
     private static final int MAX_CHARS = 256;
 
     /*
-     * Bytes used as Monte Carlo co-ordinates. This should be no more bits than
+     * Bytes used as Monte Carlo coordinates. This should be no more bits than
      * the mantissa of your "double" floating point type.
      */
     private static final int MONTE_N = 6;
@@ -40,7 +39,7 @@ public class JEnt {
     private double mEntropy;
     private double mChiSquare;
     private double mChiSquareProbability;
-    private double mAritmeticMean;
+    private double mArithmeticMean;
     private double mMonteCarloPi;
     private double mSerialCorrelation;
 
@@ -50,7 +49,7 @@ public class JEnt {
     private boolean sccfirst = true;
     private double sccu0, scct1, scct2, scct3, scclast;
     private int mp;
-    private double incirc = Math.pow(Math.pow(256.0, (double) (MONTE_N / 2)) - 1, 2.0);
+    private double incirc = Math.pow(Math.pow(256.0, (MONTE_N / 2D)) - 1, 2.0);
     private double inmont, mcount, montex, montey, sccun;
 
     /**
@@ -74,7 +73,7 @@ public class JEnt {
     private JEntReport execute() {
         readInputFile();
         executeSerialCorrelation();
-        calculateAritmeticMeanAndChiSquare();
+        calculateArithmeticMeanAndChiSquare();
         calculateChiSquareProbability();
         calculateEntropy();
         calculateMonteCarloPi();
@@ -95,7 +94,8 @@ public class JEnt {
             e.printStackTrace();
         } finally {
             try {
-                reader.close();
+                if (reader != null)
+                    reader.close();
             } catch (Exception e) {
                 // do nothing
             }
@@ -106,7 +106,7 @@ public class JEnt {
         int bitIndex = 0;
 
         do {
-            int bitValue = 0;
+            int bitValue;
             if (mJEntSettings.isBinary()) {
                 bitValue = ((c >>> 7) & 0x01);
                 mCharsCounter[bitValue]++;
@@ -167,7 +167,7 @@ public class JEnt {
         }
     }
 
-    private void calculateAritmeticMeanAndChiSquare() {
+    private void calculateArithmeticMeanAndChiSquare() {
         double expected = mTotalCount / (mJEntSettings.isBinary() ? 2.0 : 256.0);
         double datasum = 0;
         for (int i = 0; i < (mJEntSettings.isBinary() ? 2 : 256); i++) {
@@ -176,7 +176,7 @@ public class JEnt {
             mChiSquare += (a * a) / expected;
             datasum += ((double) i) * mCharsCounter[i];
         }
-        mAritmeticMean = datasum / mTotalCount;
+        mArithmeticMean = datasum / mTotalCount;
     }
 
     private void calculateChiSquareProbability() {
@@ -209,7 +209,7 @@ public class JEnt {
                 / (mJEntSettings.isBinary() ? 1.0 : 8.0))));
         testReport.setChiSquare(mChiSquare);
         testReport.setChiSquareProbability(mChiSquareProbability);
-        testReport.setAritmeticMean(mAritmeticMean);
+        testReport.setArithmeticMean(mArithmeticMean);
         testReport.setMonteCarloPI(mMonteCarloPi);
         testReport.setMonteCarloError(100.0 * (Math.abs(Math.PI - mMonteCarloPi) / Math.PI));
         testReport.setSerialCorrelation(mSerialCorrelation);
