@@ -18,7 +18,7 @@ public class JEntSampleTest {
         assertEquals(0.0, jEntReport.getCompressionPercent(), TESTING_DELTA);
         assertEquals(2.14806043496445, jEntReport.getChiSquare(), TESTING_DELTA);
         assertEquals(0.14275012362450024, jEntReport.getChiSquareProbability(), TESTING_DELTA);
-        assertEquals(0.5002792590269065, jEntReport.getAritmeticMean(), TESTING_DELTA);
+        assertEquals(0.5002792590269065, jEntReport.getArithmeticMean(), TESTING_DELTA);
         assertEquals(3.140025094102886, jEntReport.getMonteCarloPI(), TESTING_DELTA);
         assertEquals(0.04989696818637273, jEntReport.getMonteCarloError(), TESTING_DELTA);
         assertEquals(5.666290773151834E-4, jEntReport.getSerialCorrelation(), TESTING_DELTA);
@@ -27,6 +27,7 @@ public class JEntSampleTest {
     @Test
     public void testSampleInputResultingStringMessage() {
         JEntReport jEntReport = JEntSample.generateReportForSampleFile();
+
         assertEquals("Entropy = 0,999999774981 bits per bit.\n" +
                 "\n" +
                 "Optimum compression would reduce the size \n" +
