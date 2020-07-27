@@ -22,33 +22,33 @@ import java.nio.charset.StandardCharsets;
 
 public class JEntSample {
 
-	public static void main(String[] args) {
-		File sampleFile = getFileFromResources("input/inputFile.txt");
+    public static void main(String[] args) {
+        File sampleFile = getFileFromResources("input/inputFile.txt");
 
-		JEntSettings settings = new JEntSettings.Builder()
-				.setBinary(true)
-				.setCharset(StandardCharsets.ISO_8859_1)
-				.setInputFile(sampleFile).build();
+        JEntSettings settings = new JEntSettings.Builder()
+                .setBinary(true)
+                .setCharset(StandardCharsets.ISO_8859_1)
+                .setInputFile(sampleFile).build();
 
-		JEntReport report = JEnt.executeTests(settings);
+        JEntReport report = JEnt.executeTests(settings);
 
-		if (report.getEntropy() > 7.5) {
-			// OK, it may be random...
-		} else {
-			// mmmh, too little entropy...
-		}
+        if (report.getEntropy() > 7.5) {
+            // OK, it may be random...
+        } else {
+            // mmmh, too little entropy...
+        }
 
-		System.out.println(report.toString());
-	}
+        System.out.println(report.toString());
+    }
 
-	private static File getFileFromResources(String fileName) {
-		ClassLoader classLoader = JEntSample.class.getClassLoader();
-		URL resource = classLoader.getResource(fileName);
-		if (resource == null) {
-			throw new IllegalArgumentException("File not found: " + fileName);
-		} else {
-			return new File(resource.getFile());
-		}
-	}
+    private static File getFileFromResources(String fileName) {
+        ClassLoader classLoader = JEntSample.class.getClassLoader();
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("File not found: " + fileName);
+        } else {
+            return new File(resource.getFile());
+        }
+    }
 
 }
