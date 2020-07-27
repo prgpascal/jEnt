@@ -17,19 +17,18 @@
 package com.prgpascal.jent;
 
 import java.io.File;
-import java.nio.charset.Charset;
-
-import com.prgpascal.jent.JEnt;
-import com.prgpascal.jent.JEntSettings;
-import com.prgpascal.jent.JEntReport;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class JEntSample {
 
 	public static void main(String[] args) {
+		File sampleFile = getFileFromResources("input/inputFile.txt");
+
 		JEntSettings settings = new JEntSettings.Builder()
 				.setBinary(true)
-				.setCharset(Charset.forName(JEnt.ISO88591))
-				.setInputFile(new File("input/inputFile.txt")).build();
+				.setCharset(StandardCharsets.ISO_8859_1)
+				.setInputFile(sampleFile).build();
 
 		JEntReport report = JEnt.executeTests(settings);
 
@@ -40,6 +39,16 @@ public class JEntSample {
 		}
 
 		System.out.println(report.toString());
+	}
+
+	private static File getFileFromResources(String fileName) {
+		ClassLoader classLoader = JEntSample.class.getClassLoader();
+		URL resource = classLoader.getResource(fileName);
+		if (resource == null) {
+			throw new IllegalArgumentException("File not found: " + fileName);
+		} else {
+			return new File(resource.getFile());
+		}
 	}
 
 }
