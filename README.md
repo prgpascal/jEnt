@@ -1,3 +1,7 @@
+# jEnt
+![build](https://img.shields.io/travis/prgpascal/jEnt)
+
+
 ## Overview
 This library is essentially a Java porting of the [ENT randomness test tool][ent], created by John Walker and written in C.  
 
