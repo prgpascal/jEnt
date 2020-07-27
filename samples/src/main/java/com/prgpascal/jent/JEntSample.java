@@ -23,14 +23,7 @@ import java.nio.charset.StandardCharsets;
 public class JEntSample {
 
     public static void main(String[] args) {
-        File sampleFile = getFileFromResources("input/inputFile.txt");
-
-        JEntSettings settings = new JEntSettings.Builder()
-                .setBinary(true)
-                .setCharset(StandardCharsets.ISO_8859_1)
-                .setInputFile(sampleFile).build();
-
-        JEntReport report = JEnt.executeTests(settings);
+        JEntReport report = generateReportForSampleFile();
 
         if (report.getEntropy() > 7.5) {
             // OK, it may be random...
@@ -39,6 +32,17 @@ public class JEntSample {
         }
 
         System.out.println(report.toString());
+    }
+
+    public static JEntReport generateReportForSampleFile() {
+        File sampleFile = getFileFromResources("input/inputFile.txt");
+
+        JEntSettings settings = new JEntSettings.Builder()
+                .setBinary(true)
+                .setCharset(StandardCharsets.ISO_8859_1)
+                .setInputFile(sampleFile).build();
+
+        return JEnt.executeTests(settings);
     }
 
     private static File getFileFromResources(String fileName) {
