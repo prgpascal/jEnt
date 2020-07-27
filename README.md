@@ -1,7 +1,7 @@
 ## Overview
 This library is essentially a Java porting of the [ENT randomness test tool][ent], created by John Walker and written in C.  
 
-You can run it in your Java programs and get the tests results in a standard JavaBean object. You can than interpret it to establish if a particular test (or all of them) passed.
+You can run it in your Java programs and get the tests results in a standard JavaBean object. You can then interpret it to establish if a particular test (or all of them) passed.
 
 Given an input file (and few optional parameters), JEnt will calculate the following values:
 - Entropy
@@ -15,15 +15,15 @@ For more detail about the tests, please refer to the [ENT project page][ent].
 
 ## Sample
 Just create a JEntSettings object and pass it to JEnt.
-As result, you will get a JavaBean object, containing all the tests results.
+As a result, you will get a JavaBean object, containing all the tests results.
 ```java
 JEntSettings settings = new JEntSettings.Builder()
-    .setInputFile(new File("input/inputFile.txt"))
+    .setInputFile(inputFile)
     .build();
 
 JEntReport report = JEnt.executeTests(settings);
 ```
-You  need to implement the whole logic to define if a test passed or not, based on the result this library will provide.  
+You  need to implement the whole logic to define if a test passed or not, based on the result this library will return.  
 For example, you can check if the tested input file contains a sufficient amount of entropy, with something like this:
 ```java
 if (report.getEntropy() > 7.5) {
@@ -56,7 +56,7 @@ The input file field is mandatory, while the other fields are optional (because 
 JEntSettings settings = new JEntSettings.Builder()
       .setInputFile(inputFile)
       .setBinary(true)
-      .setCharset(Charset.forName(JEnt.ISO88591))
+      .setCharset(StandardCharsets.ISO_8859_1)
       .build();
 ```
 
@@ -77,7 +77,7 @@ and this:
 <dependency>
   <groupId>com.github.prgpascal.jEnt</groupId>
   <artifactId>core</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
@@ -92,7 +92,7 @@ repositories {
 and this:
 ```gradle
 dependencies {
-  compile 'com.github.prgpascal:jEnt:core:1.0.0'
+  compile 'com.github.prgpascal:jEnt:core:2.0.0'
 }
 ```
 
