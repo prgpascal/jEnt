@@ -16,6 +16,8 @@
 
 package com.prgpascal.jent;
 
+import java.util.Locale;
+
 public class JEntReport {
     private boolean isBinary;
     private double entropy;
@@ -162,7 +164,7 @@ public class JEntReport {
     }
 
     private String formatDouble(double value) {
-        return String.format("%.12f", value);
+        return String.format(Locale.ROOT, "%.12f", value);
     }
 
 }

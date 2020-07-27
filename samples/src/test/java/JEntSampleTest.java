@@ -28,17 +28,17 @@ public class JEntSampleTest {
     public void testSampleInputResultingStringMessage() {
         JEntReport jEntReport = JEntSample.generateReportForSampleFile();
 
-        assertEquals("Entropy = 0,999999774981 bits per bit.\n" +
+        assertEquals("Entropy = 0.999999774981 bits per bit.\n" +
                 "\n" +
                 "Optimum compression would reduce the size \n" +
                 "of this 6886080 bit file by 0.0 percent. \n" +
                 "\n" +
-                "Chi square distribution for 6886080 samples is 2,148060434964, and randomly \n" +
-                "would exceed this value 14,275012362450 percent of the times.\n" +
+                "Chi square distribution for 6886080 samples is 2.148060434964, and randomly \n" +
+                "would exceed this value 14.275012362450 percent of the times.\n" +
                 "\n" +
-                "Arithmetic mean value of data bits is 0,500279259027 (0.5 = random).\n" +
-                "Monte Carlo value for Pi is 3,140025094103 (error 0.04989696818637273 percent).\n" +
-                "Serial correlation coefficient is 0,000566629077 (totally uncorrelated = 0.0).\n", jEntReport.toString());
+                "Arithmetic mean value of data bits is 0.500279259027 (0.5 = random).\n" +
+                "Monte Carlo value for Pi is 3.140025094103 (error 0.04989696818637273 percent).\n" +
+                "Serial correlation coefficient is 0.000566629077 (totally uncorrelated = 0.0).\n", jEntReport.toString());
     }
 
 }
